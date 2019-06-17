@@ -8,6 +8,7 @@ class PokeList extends Component {
     const renderPokemonSearch =
       pokemons
         .filter(item => item.name.toLowerCase().includes(search.toLowerCase()))
+        .sort((a, b) => a.id - b.id)
         .map(item => {
           return (
             <li key={item.id - 1} className="list__item--poke">

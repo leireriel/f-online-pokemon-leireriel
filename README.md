@@ -34,12 +34,12 @@ You need to install [Node.js](https://nodejs.org/), and then:
 ## Description ☝
 
 * Fetchs are made to this free API: **[PokeAPI](https://pokeapi.co/)**
-* As the number of requests is limited, the data is stored in **local storage**
+* As the number of requests is limited, the data can be stored in **local storage** (uncomment code on App.js)
 
 
 ## 📈 To Do list
 
-* Fetch to all pages on API
+* Fetch to all pages on API (Function to get numbers from 25 to 25 until 964?) - to make with scroll.
 * Different background color for cards depending on the pokemon type(s).
 
 
