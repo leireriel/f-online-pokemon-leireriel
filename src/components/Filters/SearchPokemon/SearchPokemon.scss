@@ -1,0 +1,18 @@
+.search__form--poke {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 30px 20px;
+}
+
+.search__label--poke {
+  display: none;
+}
+
+.search__input--poke {
+  padding: 10px;
+  width: 270px;
+  @media all and (min-width: 768px) {
+    width: 500px;
+  }
+}

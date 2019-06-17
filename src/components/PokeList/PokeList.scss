@@ -1,0 +1,57 @@
+.list__all--poke {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.list__item--poke {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 200px;
+  height: 200px;
+  border: 1px solid black;
+  margin: 10px;
+  padding: 10px;
+  background-color: white;
+}
+
+.poke__image--wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 200px;
+}
+
+.poke__id {
+  margin: 0;
+  text-transform: uppercase;
+  font-size: 12px;
+  width: 200px;
+}
+
+.poke__text--wrapper {
+  background-color: white;
+  text-transform: capitalize;
+}
+
+.poke__name {
+  margin: 0;
+}
+
+.poke__types--list {
+  display: flex;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.poke__type {
+  margin: 5px;
+  padding: 5px;
+  border: 1px solid yellow;
+  background-color: black;
+  color: white;
+  font-size: 14px;
+}

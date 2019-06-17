@@ -1,13 +1,18 @@
 import React, { Component, Fragment } from 'react';
 import { fetchPokemons } from './services/fetchPokemons';
+import SearchPokemon from './components/Filters/SearchPokemon';
+import PokeList from './components/PokeList';
+import './App.scss';
 
 class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      pokemons: []
+      pokemons: [],
+      search: ''
     };
     this.getPokemons = this.getPokemons.bind(this);
+    this.handleInputChange = this.handleInputChange.bind(this);
   }
 
   componentDidMount() {
@@ -43,36 +48,28 @@ class App extends Component {
     }
   }
 
+  handleInputChange(event) {
+    const newSearch = event.currentTarget.value;
+    this.setState({
+      search: newSearch
+    })
+  }
+
   render() {
-    const { pokemons } = this.state;
+    const { pokemons, search } = this.state;
     return (
       <Fragment>
-      <h1>pokedex</h1>
-      <ol>
-      {pokemons
-        .map(item => {
-          return (
-            <li key={item.id - 1}>
-              <img 
-                src={item.sprites.front_default} 
-                alt={`${item.name} front`}
-              />
-              <p>ID/{item.id}</p>
-              <h2>{item.name}</h2>
-              <ol>
-                {item.types
-                  .map((item, index) => {
-                    return (
-                      <li key={index}>{item.type.name}</li>
-                    );
-                  })
-                }
-              </ol>
-            </li>
-          );
-        })
-      }
-      </ol>
+        <header></header>
+        <main>
+          <SearchPokemon 
+            actionSearch={this.handleInputChange}
+          />
+          <PokeList 
+            pokemons={pokemons}
+            search={search}
+          />
+        </main>
+        <footer></footer>
       </Fragment>
     );
   }
