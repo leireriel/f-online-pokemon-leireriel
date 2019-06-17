@@ -18,12 +18,13 @@ class App extends Component {
         pokeData
           .map((item, index) => {
             item.id = index + 1;
-            return (
+              return (
               fetch(`https://pokeapi.co/api/v2/pokemon/${item.id}/`)
               .then(res => res.json())
               .then(data => {
                 const pokeDetails = data;
                 item.details = pokeDetails;
+                console.log(item)
               })
             );
           })
