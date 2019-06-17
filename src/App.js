@@ -5,24 +5,40 @@ class App extends Component {
     super(props);
     this.state = {
       pokemons: []
-    }
-
-    fetch('https://pokeapi.co/api/v2/pokemon?limit=25')
-    .then(res => res.json())
-    .then(data => {
-      const pokeData = data.results;
-      pokeData
-        .map((item, index) => {
-          return (
-            item.id = index + 1
-          )
-        })
-      this.setState({
-        pokemons: pokeData
-      });
-    });
-
+    };
   }
+
+  componentDidMount() {
+    const getItem = JSON.parse(localStorage.getItem('pokemonsUser'));
+    if (getItem === null) {
+      fetch('https://pokeapi.co/api/v2/pokemon?limit=25')
+      .then(res => res.json())
+      .then(data => {
+        const pokeData = data.results;
+        pokeData
+          .map((item, index) => {
+            item.id = index + 1;
+            return (
+              fetch(`https://pokeapi.co/api/v2/pokemon/${item.id}/`)
+              .then(res => res.json())
+              .then(data => {
+                const pokeDetails = data;
+                item.details = pokeDetails;
+              })
+            );
+          })
+        localStorage.setItem('pokemonsUser', JSON.stringify(pokeData));
+        this.setState({
+          pokemons: pokeData
+        })
+      })
+    } else {
+      this.setState({
+        pokemons: getItem
+      })
+    }
+  }
+
   render() {
     const { pokemons } = this.state;
     return (
@@ -33,10 +49,11 @@ class App extends Component {
         .map(item => {
           return (
             <li key={item.id}>
+              
               <h2>{item.name}</h2>
               <p>ID/{item.id}</p>
             </li>
-          )
+          );
         })
       }
       </ol>
