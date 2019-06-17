@@ -2,6 +2,10 @@
   list-style: none;
   margin: 0;
   padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  padding: 100px 0 50px 0;
 }
 
 .list__item--poke {
@@ -15,6 +19,15 @@
   margin: 10px;
   padding: 10px;
   background-color: white;
+  cursor: pointer;
+  &:hover {
+    .poke__image--back {
+      display: block;
+    }
+    .poke__image--front {
+      display: none;
+    }
+  }
 }
 
 .poke__image--wrapper {
@@ -22,6 +35,10 @@
   justify-content: center;
   align-items: center;
   width: 200px;
+}
+
+.poke__image--back {
+  display: none;
 }
 
 .poke__id {
@@ -42,6 +59,7 @@
 
 .poke__types--list {
   display: flex;
+  justify-content: center;
   list-style: none;
   margin: 0;
   padding: 0;

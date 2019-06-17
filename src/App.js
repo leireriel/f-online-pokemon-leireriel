@@ -2,6 +2,7 @@ import React, { Component, Fragment } from 'react';
 import { fetchPokemons } from './services/fetchPokemons';
 import SearchPokemon from './components/Filters/SearchPokemon';
 import PokeList from './components/PokeList';
+import Contact from './components/Contact';
 import './App.scss';
 
 class App extends Component {
@@ -59,17 +60,20 @@ class App extends Component {
     const { pokemons, search } = this.state;
     return (
       <Fragment>
-        <header></header>
-        <main>
+        <header>
           <SearchPokemon 
             actionSearch={this.handleInputChange}
           />
+        </header>
+        <main className="main__pokelist">
           <PokeList 
             pokemons={pokemons}
             search={search}
           />
         </main>
-        <footer></footer>
+        <footer>
+          <Contact />
+        </footer>
       </Fragment>
     );
   }
