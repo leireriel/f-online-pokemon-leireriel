@@ -20,16 +20,15 @@ You need to install [Node.js](https://nodejs.org/), and then:
 ## 📦 Project Structure
 
 ```
-/
-`-_src
-    |_App
-    |_components
-        |_Filters
-          |_SearchPokemon
-        |_PokeList
-        |_Contact
-    |_services
-        |_fetchPokemons
+|_src
+  |_App
+  |_components
+    |_Filters
+      |_SearchPokemon
+    |_PokeList
+    |_Contact
+  |_services
+    |_fetchPokemons
 ```
 
 ## Description ☝
