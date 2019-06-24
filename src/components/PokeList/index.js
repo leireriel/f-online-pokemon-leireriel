@@ -1,16 +1,16 @@
-import React, { Component } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 import './PokeList.scss';
 
-class PokeList extends Component {
-  render() {
-    const { pokemons, search } = this.props;
-    const renderPokemonSearch =
-      pokemons
-        .filter(item => item.name.toLowerCase().includes(search.toLowerCase()))
-        .sort((a, b) => a.id - b.id)
-        .map(item => {
-          return (
+const PokeList = ({ pokemons, search }) => {
+  const renderPokemonSearch =
+    pokemons
+      .filter(item => item.name.toLowerCase().includes(search.toLowerCase()))
+      .sort((a, b) => a.id - b.id)
+      .map(item => {
+        return (
+          <Link to={`/about/${item.id}`} className="link__poke">
             <li key={item.id - 1} className="list__item--poke">
               <div className="poke__image--wrapper">
                 <img 
@@ -36,21 +36,31 @@ class PokeList extends Component {
                     })
                   }
                 </ol>
+                <ol className="poke__evolutions--list">
+                  <p className="poke__evolution">Evoluciona de </p>
+                  {item.forms
+                    .map((item, index) => {
+                      return (
+                        <li key={index} className="poke__evolution">{item.name}</li>
+                      );
+                    })
+                  }
+                </ol>
               </div>
             </li>
-          );
-        })
-        return(
-          <ol className="list__all--poke">
-            {renderPokemonSearch.length === 0
-              ?
-                <li className="try-again">No hay nada con {search} ;&#41;</li>
-                  :
-                    renderPokemonSearch
-            } 
-          </ol>
-    );
-  }
+          </Link>
+        );
+      })
+  return(
+    <ol className="list__all--poke">
+      {renderPokemonSearch.length === 0
+        ?
+          <li className="try-again">No hay nada con {search} ;&#41;</li>
+            :
+              renderPokemonSearch
+      } 
+    </ol>
+  );
 }
 
 PokeList.propTypes = {

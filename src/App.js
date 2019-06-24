@@ -2,7 +2,9 @@ import React, { Component, Fragment } from 'react';
 import { fetchPokemons } from './services/fetchPokemons';
 import SearchPokemon from './components/Filters/SearchPokemon';
 import PokeList from './components/PokeList';
+import PokeDetail from './components/PokeDetail';
 import Contact from './components/Contact';
+import { Switch, Route } from 'react-router-dom';
 import './App.scss';
 
 class App extends Component {
@@ -71,16 +73,28 @@ class App extends Component {
     const { pokemons, search } = this.state;
     return (
       <Fragment>
-        <header>
-          <SearchPokemon 
-            actionSearch={this.handleInputChange}
-          />
-        </header>
+        <header />
         <main className="main__pokelist">
-          <PokeList 
-            pokemons={pokemons}
-            search={search}
-          />
+          <Switch>
+            <Route exact path="/" render={() =>
+              <Fragment>
+                <SearchPokemon 
+                  actionSearch={this.handleInputChange}
+                />
+                <PokeList 
+                  pokemons={pokemons}
+                  search={search}
+                />
+              </Fragment>
+            } />
+
+            <Route path="/about/:pokemon" render={id =>
+              <PokeDetail 
+                id={parseInt(id.match.params.pokemon)}
+                pokemon={pokemons.filter(pokemon => pokemon.id === parseInt(id.match.params.pokemon))}
+              />
+            } />
+          </Switch>
         </main>
         <footer>
           <Contact />

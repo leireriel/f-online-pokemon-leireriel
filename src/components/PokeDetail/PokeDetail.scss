@@ -1,0 +1,14 @@
+.wrapper__detail {
+  animation-name: degrade;
+  animation-duration: 5s;
+  animation-iteration-count: 1;
+  @keyframes degrade {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+  transition: opacity ease 1s;
+}
