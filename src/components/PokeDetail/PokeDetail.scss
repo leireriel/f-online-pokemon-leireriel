@@ -1,3 +1,7 @@
+.wrapper__route {
+  padding: 20px;
+}
+
 .wrapper__detail {
   animation-name: degrade;
   animation-duration: 5s;
@@ -11,4 +15,19 @@
     }
   }
   transition: opacity ease 1s;
+}
+
+.name__detail {
+  color:blue;
+  text-transform: capitalize;
+}
+
+.element__detail {
+  margin-bottom: 20px;
+}
+
+.moves__detail {
+  width: 200px;
+  height: 100px;
+  overflow-y: scroll;
 }
